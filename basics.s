@@ -159,21 +159,21 @@ main:
 	
 	# Use the add instruction to store the result of adding two registers.
 
-	# Here the result of adding $t0 and $t1 is stored in register $t2.
+	# Here the result of adding $t0 and $t1 is stored in register $t4.
 
 	add $t4, $t0, $t2
 
 	# Note that 5 + 9 = 14 = 0x0000000e.
 
-
-	# Use the addi instruction to add an immediate value to the content of a register.
-
-	# Here 1 is added to $t2 and the result is stored in register $t3.
-	
+		
 	#####
 	##### addi - Add Immediate
 	#####
 	
+	# Use the addi instruction to add an immediate value to the content of a register.
+
+	# Here 1 is added to $t4 and the result is stored in register $t5.
+
 	addi $t5, $t4, 1
 
 	# Note that 14 + 1 = 15 = 0x0000000f
