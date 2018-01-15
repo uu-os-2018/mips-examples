@@ -159,7 +159,7 @@ main:
 	
 	# Use the add instruction to store the result of adding two registers.
 
-	# Here the result of adding $t0 and $t1 is stored in register $t4.
+	# Here the result of adding $t0 and $t2 is stored in register $t4.
 
 	add $t4, $t0, $t2
 
