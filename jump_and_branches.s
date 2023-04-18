@@ -28,12 +28,17 @@
 #
 # Karl Marklund <karl.marklund@it.uu.se>
 #
+# Zhang Runmin <fmrt19zrmin@163.com>
 #
 # HISTORY
 #
 # 2015-12-10
 #
 # First version.
+#
+# 2023-04-18
+#
+# Second version.
 # ---------------------------------------------------------------------------
 
 
@@ -61,7 +66,7 @@ main:
 
 	# Execution starts at the label main.
 
-	addi $s0, $s0, 0 	# Initialize $s0 = 0.
+	andi $s0, $s0, 0 	# Initialize $s0 = 0.
 
 
   	#####
@@ -106,7 +111,7 @@ increment_s1:
 	# First we need to test if $t0 < $t1 and make a decision based on the result.
 	# For this purpose we can use the blt (Branch if Less Than) instruction.
 
-	# If $t0 < $1 jump to the label less_than, othewise continue with the next
+	# If $t0 < $t1 jump to the label less_than_1, othewise continue with the next
 	# instruction.
 
 	blt $t0, $t1, less_than_1
@@ -118,7 +123,7 @@ not_less_than_1:
 	# NOTE: As a result of using blt the else case follows directly after the test.
 
 	la $a0, no	# Load the address of string to print.
-	j print_1	# Unconditionally jump to the label print.
+	j print_1	# Unconditionally jump to the label print_1.
 
 less_than_1:
 
@@ -136,7 +141,7 @@ print_1:
 	
 	# An alternative is to use the bge (Branch if Greater or Equal) instruction.
 
-	# If $t0 >= $t1 jump to label greater_or_equal, otherwise continute with the
+	# If $t0 >= $t1 jump to label not_less_than_2, otherwise continute with the
 	# next instruction.
 
 	bge $t0, $t1, not_less_than_2
@@ -179,3 +184,5 @@ loop_forever:
 	j loop_forever
 
 	# This code will never be reached.
+	li $v0, 10
+	syscall

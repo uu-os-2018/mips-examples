@@ -30,22 +30,26 @@
 #   Directive	Description
 #   ----------------------------------------------------------------------
 #   .data	Subsequent items are stored in the data segment.
-#   .text	Subsequent items are put in the user text seg- ment.
+#   .text	Subsequent items are put in the user text segment.
 #   .space	Allocate n bytes of space in the current segment.
 #   .word n	Store the integer n as 4 byte word in the current segment.
-#   .asciiz	Store the string str in memory and null-termi- nate it.
+#   .asciiz	Store the string str in memory and null-terminate it.
 #
 #
 # AUTHOR
 #
 # Karl Marklund <karl.marklund@it.uu.se>
-#
+# Zhang Runmin <fmrt19zrmin@163.com>
 #
 # HISTORY
 #
 # 2015-12-10
 #
 # First version.
+# 
+# 2023-04-18
+#
+# Second version.
 # ---------------------------------------------------------------------------
 
 
@@ -96,12 +100,12 @@ main:
 	
 	# To store a value in a register, the li instruction can be used.
 
-	# Here the immediate value 5 i loaded into register $t0.
+	# Here the immediate value 5 is loaded into register $t0.
 
 	li $t0, 5
 
 	# Note that li is a pseudo instruction that gets translated to a addiu
-	# (Add Immediate Unsigned) instruction by the assemblator.
+	# (Add Immediate Unsigned) instruction by the assembler.
 
 	#####
 	##### la - Load Address
@@ -113,11 +117,11 @@ main:
 
 	la $t1, x
 
-	# NOTE: la is a pseudo instruction that the assemblator translates to
+	# NOTE: la is a pseudo instruction that the assembler translates to
 	# two instructions:
 	#
-	# One lui (Load Upper Immediate) instruction setting $ta (address translate).
-	#
+	# One lui (Load Upper Immediate) instruction setting $at (address translate). 
+	# 
 	# One ori (OR Immediate) storing the memory address of the label in register
 	# $t1.
 
@@ -144,7 +148,7 @@ main:
 	
 	lw $t3, x
 
-	# NOTE: when using the above adressing mode (label) the assemblator
+	# NOTE: when using the above adressing mode (label) the assembler
 	# translates the single lw instruction to two instructions:
 	#
 	# One lui (Load Upper Immediate) instruction storing the memory address of
@@ -198,13 +202,13 @@ main:
 
 	sw $t5, z
 
-	# NOTE: when using the above adressing mode (label) the assemblator
+	# NOTE: when using the above adressing mode (label) the assembler
 	# translates the single lw instruction to two instructions:
 	#
 	# One lui (Load Upper Immediate) instruction storing the memory address of
 	# the label in register $at (address translation register).
 	#
-	# One lw instruction with  address mode c(rx), which uses the sum of the
+	# One sw instruction with  address mode c(rx), which uses the sum of the
 	# immediate c and register rx as the address.
 
 	#####
@@ -219,7 +223,7 @@ main:
 	move $t6, $t5
 
 	#####
-	##### print_string (system call(
+	##### print_string (system call)
 	#####
 
 	# Set system call code 4 (print_string) in regsiter $v0.
@@ -244,11 +248,11 @@ main:
 
 	# Load value to print in register $a0.
 
-	# Can use li to print immediate value.
+	# Can use li to load immediate value.
 
 	li $a0, 127
 
-	# NOTE: system call code already set to 1 (print_int) in $a0.
+	# NOTE: system call code already set to 1 (print_int) in $v0.
 
 	# Use the syscall instruction to print the integer.
 

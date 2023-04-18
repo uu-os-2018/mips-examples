@@ -16,12 +16,17 @@
 #
 # Karl Marklund <karl.marklund@it.uu.se>
 #
+# Zhang Runmin <fmrt19zrmin@163.com>
 #
 # HISTORY
 #
 # 2015-12-10
 #
 # First version.
+# 
+# 2023-04-18
+#
+# Second version.
 # ---------------------------------------------------------------------------
 
 
@@ -34,19 +39,19 @@
 
 	.data
 
-# Store three consequtive 4 byte words in memory.
+# Store three consecutive 4 byte words in memory.
 
 int_array:  .word 10, 11, 12
 
-# Three stirngs. Each label is an address (pointer) to a null terminated string.
+# Three strings. Each label is an address (pointer) to a null terminated string.
 
 one:	.asciiz "One\n"
 two: 	.asciiz "Two\n"
 three:	.asciiz "Three\n"
 
-# Here each value in str_array is a label that gets replaced by the label
-# address by the assembler. Each such label is a address (pointer) to a
-# null terminated string. Hence this is an array of pointer to strings, that is,
+# Here each value in str_array is a label that gets replaced by the label address 
+# by the assembler. Each such label is an address, a.k.a. a pointer to a null 
+# terminated string. Hence this is an array of pointer to strings, that is, 
 # an array of strings.
 
 str_array: .word one, two, three
