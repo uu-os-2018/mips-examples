@@ -14,11 +14,17 @@
 #
 # Karl Marklund <karl.marklund@it.uu.se>
 #
+# Zhang Runmin <fmrt19zrmin@163.com>
+#
 # HISTORY
 #
 # 2018-01-14
 #
 # First version.
+#
+# 2023-04-18
+#
+# Second version.
 # ---------------------------------------------------------------------------
 
 	.data
@@ -51,7 +57,7 @@ main:
 	
 
 	# Jump to label hello and set $ra to the address of the next 
-	# instruction, i.e., the address of the li $0, 0x1234abcd instruction.
+	# instruction, i.e., the address of the li $t0, 0x1234abcd instruction.
 	
 	jal hello
 	
@@ -138,9 +144,9 @@ compute:
 # ---------------------------------------------------------------------------
 # Subroutine say_hi
 #
-# Argument(s): $a - Address to a <name> string.
+# Argument(s): $a0 - Address to a <name> string.
 #
-# Side effects: Prints "Hi <name>
+# Side effects: Prints "Hi <name>"
 # ---------------------------------------------------------------------------	
 say_hi:
 	move $t0, $a0
